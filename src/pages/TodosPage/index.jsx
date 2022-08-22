@@ -1,7 +1,12 @@
 import React from 'react';
+import TodosList from '../../containers/TodosList';
 
 const TodosPage = () => {
-	return <div>TodosPage</div>;
+	return (
+		<div className='p-10'>
+			<TodosList />
+		</div>
+	);
 };
 
 export default TodosPage;
