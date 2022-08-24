@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import CartContext from '../../contexts/CartContext';
 
 const ProductCard = ({ product }) => {
-	console.log('product: ', product);
+	const { cart, addProduct } = useContext(CartContext); //! 4.2
+
+	const isInCart = (id) => {
+		return !!cart.find((item) => item.id === id);
+	};
+
 	return (
 		<div className='w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700'>
 			<a href='#' className='flex justify-center'>
@@ -77,12 +83,21 @@ const ProductCard = ({ product }) => {
 						<span className='text-3xl font-bold text-gray-900 dark:text-white'>
 							${product.price}
 						</span>
-						<a
-							href='#'
-							className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
-						>
-							Add to cart
-						</a>
+						{isInCart(product.id) ? (
+							<div
+								onClick={() => addProduct(product)}
+								className='text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800'
+							>
+								Already in cart
+							</div>
+						) : (
+							<div
+								onClick={() => addProduct(product)}
+								className='text-white cursor-pointer bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+							>
+								Add to cart
+							</div>
+						)}
 					</div>
 				</div>
 			</div>

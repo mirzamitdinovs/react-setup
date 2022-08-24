@@ -1,0 +1,11 @@
+1. add cart icon in navbar  /heroicons.com
+  1-1. when clicked, should navigate to cart page
+  1-2. should show amount of products inside cart context
+2. create cartpage and draw it
+3. create cartcontext with all functionalities
+4. add product to cart context from productcard
+  4-1. add cart length to navbar
+  4-2. toggle add to card button
+5. inside cartpage change product quantity
+6. inside cartpage remove product from cartcontext
+7. calculate total price
